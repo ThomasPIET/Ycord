@@ -1,0 +1,15 @@
+# ninja log v6
+32	148	7615911313158252	C:/Users/pablo/Documents/YTsap/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	9d04fed00573e501
+163	377	7615911314458398	YTsap_autogen/timestamp	8a9fd4fa1df52755
+343	2853	7615066934878551	CMakeFiles/YTsap.dir/main.cpp.obj	1b57408489a0df5
+163	377	7615911314458398	YTsap_autogen/mocs_compilation.cpp	8a9fd4fa1df52755
+163	377	7615911314458398	C:/Users/pablo/Documents/YTsap/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/timestamp	8a9fd4fa1df52755
+163	377	7615911314458398	C:/Users/pablo/Documents/YTsap/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/mocs_compilation.cpp	8a9fd4fa1df52755
+970	3616	7615040740191767	CMakeFiles/YTsap.dir/YTsap_autogen/mocs_compilation.cpp.obj	1037efd57f6989e7
+378	3312	7615911316618252	CMakeFiles/YTsap.dir/mainwindow.cpp.obj	9644f20e67850d53
+3312	3538	7615911345958195	YTsap.exe	b9552090a5ceaf6d
+146	1136	7615016521928507	build.ninja	6bb6a0caa05f274e
+33	150	7615914904790140	C:/Users/pablo/Documents/YTsap/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	9d04fed00573e501
+19	135	7615915127272875	C:/Users/pablo/Documents/YTsap/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	9d04fed00573e501
+21	135	7615915213013809	C:/Users/pablo/Documents/YTsap/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	9d04fed00573e501
+20	124	7615928965884058	C:/Users/pablo/Documents/YTsap/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	9d04fed00573e501

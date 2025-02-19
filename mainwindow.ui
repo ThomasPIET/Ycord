@@ -6,17 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>437</width>
-    <height>298</height>
+    <width>462</width>
+    <height>278</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#main,QMainWindow{
+	background: rgb(35, 35, 35);
+}
+
+QPushButton{
+	border-radius: 2px;
+	background: rgb(24, 24, 24);
+	color: rgb(255, 255, 255);
+}
+
+QFrame,QScrollArea,QWidget#scrollAreaWidgetContents_2,QWidget#scrollAreaWidgetContents,QTextArea{
+	background: rgb(35, 35, 35);
+	color: white;
+}
+
+QLabel{
+	color: rgb(255, 255, 255);
+}
+</string>
+  </property>
   <property name="tabShape">
    <enum>QTabWidget::TabShape::Triangular</enum>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="main">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QFrame" name="wrapper">
@@ -95,7 +116,7 @@
                <x>0</x>
                <y>0</y>
                <width>146</width>
-               <height>189</height>
+               <height>209</height>
               </rect>
              </property>
              <property name="sizePolicy">
@@ -122,6 +143,12 @@
               </property>
               <item>
                <widget class="QPushButton" name="pushButton_2">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -129,6 +156,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_10">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -136,6 +169,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_9">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -143,6 +182,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_8">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -150,6 +195,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_7">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -157,6 +208,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -164,6 +221,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_5">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -171,6 +234,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_4">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -178,6 +247,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton_3">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -185,6 +260,12 @@
               </item>
               <item>
                <widget class="QPushButton" name="pushButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>20</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string>PushButton</string>
                 </property>
@@ -290,17 +371,20 @@
                 <enum>QFrame::Shadow::Raised</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                 <property name="leftMargin">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <property name="topMargin">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <property name="rightMargin">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <item>
                  <widget class="QScrollArea" name="scrollArea">
@@ -318,7 +402,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>253</width>
+                     <width>280</width>
                      <height>224</height>
                     </rect>
                    </property>
@@ -462,7 +546,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>437</width>
+     <width>462</width>
      <height>17</height>
     </rect>
    </property>

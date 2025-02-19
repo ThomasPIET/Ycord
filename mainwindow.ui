@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>278</height>
+    <width>485</width>
+    <height>308</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,9 +24,13 @@ QPushButton{
 	color: rgb(255, 255, 255);
 }
 
-QFrame,QScrollArea,QWidget#scrollAreaWidgetContents_2,QWidget#scrollAreaWidgetContents,QTextArea{
+QFrame,QScrollArea,QWidget#scrollAreaWidgetContents_2,QWidget#scrollAreaWidgetContents,QTextArea,QLineEdit{
 	background: rgb(35, 35, 35);
 	color: white;
+}
+
+QLineEdit{
+	border: none;
 }
 
 QLabel{
@@ -38,7 +42,44 @@ QLabel{
    <enum>QTabWidget::TabShape::Triangular</enum>
   </property>
   <widget class="QWidget" name="main">
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_9">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Current Host: 192.168.1.1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item>
      <widget class="QFrame" name="wrapper">
       <property name="frameShape">
@@ -73,7 +114,7 @@ QLabel{
          </property>
          <property name="maximumSize">
           <size>
-           <width>150</width>
+           <width>180</width>
            <height>16777215</height>
           </size>
          </property>
@@ -83,7 +124,7 @@ QLabel{
          <property name="frameShadow">
           <enum>QFrame::Shadow::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
           <property name="spacing">
            <number>0</number>
           </property>
@@ -104,6 +145,12 @@ QLabel{
           </property>
           <item>
            <widget class="QScrollArea" name="userListScroll">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="layoutDirection">
              <enum>Qt::LayoutDirection::LeftToRight</enum>
             </property>
@@ -115,8 +162,8 @@ QLabel{
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>146</width>
-               <height>209</height>
+               <width>176</width>
+               <height>82</height>
               </rect>
              </property>
              <property name="sizePolicy">
@@ -142,15 +189,25 @@ QLabel{
                <number>0</number>
               </property>
               <item>
-               <widget class="QPushButton" name="pushButton_2">
+               <widget class="QLabel" name="label_15">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>20</height>
+                  <height>23</height>
                  </size>
                 </property>
                 <property name="text">
-                 <string>PushButton</string>
+                 <string>Utilisateurs</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="lineEdit">
+                <property name="placeholderText">
+                 <string>Rechercher un utilisateur...</string>
                 </property>
                </widget>
               </item>
@@ -162,99 +219,11 @@ QLabel{
                   <height>20</height>
                  </size>
                 </property>
-                <property name="text">
-                 <string>PushButton</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_9">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>20</height>
-                 </size>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                 <property name="text">
-                 <string>PushButton</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_8">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>PushButton</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_7">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>PushButton</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_6">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>PushButton</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_5">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>PushButton</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_4">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>PushButton</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_3">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>PushButton</string>
+                 <string>🔴 Pablo (192.168.1.1) [Server]</string>
                 </property>
                </widget>
               </item>
@@ -266,13 +235,72 @@ QLabel{
                   <height>20</height>
                  </size>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="text">
-                 <string>PushButton</string>
+                 <string>🟢 Thomas (192.168.1.2) [Local]</string>
                 </property>
                </widget>
               </item>
              </layout>
             </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Shadow::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_13">
+               <property name="maximumSize">
+                <size>
+                 <width>70</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Username</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_11">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>⚙️ Paramètres</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -310,10 +338,16 @@ QLabel{
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>30</height>
+              <height>45</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -332,6 +366,22 @@ QLabel{
               <widget class="QLabel" name="name">
                <property name="text">
                 <string>Username</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_12">
+               <property name="maximumSize">
+                <size>
+                 <width>60</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>📞 Appel</string>
                </property>
               </widget>
              </item>
@@ -389,10 +439,10 @@ QLabel{
                 <item>
                  <widget class="QScrollArea" name="scrollArea">
                   <property name="verticalScrollBarPolicy">
-                   <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+                   <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
                   </property>
                   <property name="horizontalScrollBarPolicy">
-                   <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+                   <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
                   </property>
                   <property name="widgetResizable">
                    <bool>true</bool>
@@ -402,8 +452,8 @@ QLabel{
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>280</width>
-                     <height>224</height>
+                     <width>295</width>
+                     <height>36</height>
                     </rect>
                    </property>
                    <property name="sizePolicy">
@@ -413,90 +463,28 @@ QLabel{
                     </sizepolicy>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_6">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
                     <item>
                      <widget class="QLabel" name="label_2">
                       <property name="text">
-                       <string>User: UIHazduazhdiuahz izuahdiau zhauzi dhauizdhai zdhzauidhazuidhazdiazudhauzid</string>
+                       <string>User: UIHazduazhdiuahz izuahdiau zhauzi dhauizdhai zdhzauidhazuidhazdiazudhauzid (✔)</string>
                       </property>
                       <property name="wordWrap">
                        <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_10">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_5">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_11">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_12">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_8">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_9">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item alignment="Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop">
-                     <widget class="QLabel" name="label">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_6">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_7">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_4">
-                      <property name="text">
-                       <string>TextLabel</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_3">
-                      <property name="text">
-                       <string>TextLabel</string>
                       </property>
                      </widget>
                     </item>
@@ -546,7 +534,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>462</width>
+     <width>485</width>
      <height>17</height>
     </rect>
    </property>

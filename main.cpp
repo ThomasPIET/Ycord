@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "login.h"
+#include "settings.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -9,6 +10,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    settings s;
     MainWindow w;
     login l;
 
@@ -23,6 +25,7 @@ int main(int argc, char *argv[])
         settings.setValue("username",name);
         l.close();
         w.show();
+        s.show();
     });
 
     l.show();

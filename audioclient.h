@@ -29,5 +29,6 @@ private:
     QAudioDevice inputDevice;
     QString serverIp;
     quint16 serverPort;
+    QByteArray sendBuffer;
 };
 #endif

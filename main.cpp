@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
+#include <QTextEdit>
 #include "audioserver.h"
 #include "audioclient.h"
 
@@ -27,9 +28,14 @@ int main(int argc, char *argv[])
     QLineEdit *portInput = new QLineEdit(&window);
     portInput->setPlaceholderText("12345");
 
+    QLabel $messageLabel = QLabel("Entrez votre message");
+    QTextEdit *messageInput = new QTextEdit(&window);
+    messageInput->setPlaceholderText("Entrez votre message");
+
     QPushButton *serverButton = new QPushButton("Démarrer le serveur", &window);
     QPushButton *clientButton = new QPushButton("Démarrer le client", &window);
     QPushButton *stopButton = new QPushButton("Arrêter", &window);
+    QPushButton *sendMessage = new QPushButton("Envoyer le message", &window);
 
     layout->addWidget(ipLabel);
     layout->addWidget(ipInput);
@@ -38,6 +44,8 @@ int main(int argc, char *argv[])
     layout->addWidget(serverButton);
     layout->addWidget(clientButton);
     layout->addWidget(stopButton);
+    layout->addWidget(messageInput);
+    layout->addWidget(sendMessage);
 
     AudioServer *server = nullptr;
     AudioClient *client = nullptr;

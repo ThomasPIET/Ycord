@@ -3,7 +3,7 @@
 QByteArray audioBuffer;
 
 AudioServer::AudioServer(quint16 port, QObject *parent)
-    : QObject(parent), tcpServer(new QTcpServer(this)), clientSocket(nullptr)
+    : QObject(parent), tcpServer(new QTcpServer(this)), clientSocket()
 {
 
     /*
@@ -53,21 +53,35 @@ void AudioServer::startServer()
 
 void AudioServer::stopServer()
 {
-    if (clientSocket)
+    foreach (QTcpSocket *socket, clientSocket)
     {
-        clientSocket->close();
+        if (socket)
+        {
+            socket->close();
+            socket->deleteLater();
+        }
     }
+    clientSocket.clear();
     tcpServer->close();
 }
 
 void AudioServer::NewConnection()
 {
-    clientSocket = tcpServer->nextPendingConnection();
+    QTcpSocket *newSocket = tcpServer->nextPendingConnection();
 
-    if (clientSocket)
+    if (newSocket)
     {
-        qDebug() << "🔌 Nouveau client connecté depuis" << clientSocket->peerAddress().toString();
-        connect(clientSocket, &QTcpSocket::readyRead, this, &AudioServer::readAudioData);
+        qDebug() << "🔌 Nouveau client connecté depuis" << newSocket->peerAddress().toString();
+        connect(newSocket, &QTcpSocket::readyRead, this, &AudioServer::readAudioData);
+
+        connect(newSocket, &QTcpSocket::disconnected, this, [this, newSocket]()
+                {
+            qDebug() << "🔌 Client déconnecté:" << newSocket->peerAddress().toString();
+            clientSocket.removeOne(newSocket);
+            newSocket->deleteLater(); });
+
+        clientSocket.append(newSocket);
+        qDebug() << "🔌 Nombre de clients connectés:" << clientSocket.size();
     }
     else
     {
@@ -77,9 +91,12 @@ void AudioServer::NewConnection()
 
 void AudioServer::readAudioData()
 {
+
     QTcpSocket *senderClient = qobject_cast<QTcpSocket *>(sender());
-    if (!senderClient)
+    if (!senderClient || !clientSocket.contains(senderClient))
+    {
         return;
+    }
 
     while (senderClient->bytesAvailable() > 0)
     {

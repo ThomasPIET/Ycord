@@ -27,7 +27,8 @@ private slots:
 
 private:
     QTcpServer *tcpServer;
-    QTcpSocket *clientSocket;
+
+    QList<QTcpSocket *> clientSocket;
     QAudioSink *audioSink;
     QIODevice *device;
     QAudioFormat format;

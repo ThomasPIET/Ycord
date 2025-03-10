@@ -12,38 +12,27 @@
 AudioClient::AudioClient(const QString &ip, quint16 port, QObject *parent)
     : QObject(parent), serverIp(ip), serverPort(port)
 {
-    // Récupère le périphérique d'entrée audio par défaut
     inputDevice = QMediaDevices::defaultAudioInput();
 
-    // Configuration du format audio :
-    // - Fréquence d'échantillonnage : 16 kHz
-    // - Mono pour réduire la taille des données et la complexité du traitement
-    // - Format des échantillons : entier 16 bits
     format.setSampleRate(16000);
     format.setChannelCount(1);
     format.setSampleFormat(QAudioFormat::Int16);
 
-    // Vérifie que le format choisi est supporté par le périphérique d'entrée.
-    // Si ce n'est pas le cas, on passe au format préféré proposé par le périphérique.
     if (!inputDevice.isFormatSupported(format))
     {
         qWarning() << "Format audio non supporté, utilisation du format préféré.";
         format = inputDevice.preferredFormat();
     }
 
-    // Création de la source audio pour la capture, qui va émettre des données audio selon le format configuré
     audioSource = new QAudioSource(inputDevice, format);
 
-    // Création et configuration du socket TCP pour établir la connexion avec le serveur.
     tcpSocket = new QTcpSocket(this);
 
-    // Connexion du signal de connexion réussie du socket à une lambda pour démarrer le streaming.
     connect(tcpSocket, &QTcpSocket::connected, this, [&]()
             {
-                qDebug() << "✅ Connexion réussie au serveur";
+                qDebug() << "✅ Connexion réussie au serveur" << serverIp << ":" << serverPort;
                 startStreaming(); });
 
-    // Gestion des erreurs de connexion en affichant un message d'erreur explicite
     connect(tcpSocket, &QTcpSocket::errorOccurred, this, [&](QAbstractSocket::SocketError error)
             {
                 Q_UNUSED(error);
@@ -51,7 +40,6 @@ AudioClient::AudioClient(const QString &ip, quint16 port, QObject *parent)
 
     qDebug() << "📡 Tentative de connexion à" << serverIp << ":" << serverPort;
 
-    // Démarrage de la tentative de connexion au serveur spécifié.
     tcpSocket->connectToHost(serverIp, serverPort);
 }
 
@@ -75,28 +63,26 @@ AudioClient::~AudioClient()
  */
 void AudioClient::startStreaming()
 {
-    // Vérifie que le socket est en état connecté avant de démarrer le streaming.
     if (tcpSocket->state() == QAbstractSocket::ConnectedState)
     {
-        // Démarre la capture audio et récupère le QIODevice associé pour accéder aux données audio.
         device = audioSource->start();
 
         const int CHUNK_SIZE = 3200;
 
-        // Connecte le signal readyRead du périphérique d'entrée à une lambda.
-        // Ce signal est émis dès que de nouvelles données audio sont disponibles.
+        /*
+        Connecte le signal readyRead du périphérique d'entrée à une lambda.
+        Ce signal est émis dès que de nouvelles données audio sont disponibles.
+        */
         QObject::connect(device, &QIODevice::readyRead, [this, CHUNK_SIZE]()
                          {
-            // Accumuler les données lues dans le buffer membre sendBuffer.
             sendBuffer.append(device->readAll());
-            qDebug() << "🔊 Buffer de données audio accumulées:" << sendBuffer.size() << "octets";
-
-            // Tant que le buffer contient au moins un chunk complet, on l'envoie.
+/*             qDebug() << "🔊 Buffer de données audio accumulées:" << sendBuffer.size() << "octets";
+ */
             while (sendBuffer.size() >= CHUNK_SIZE)
             {
                 QByteArray chunk = sendBuffer.left(CHUNK_SIZE);
-                qDebug() << "🔊 Envoi d'un chunk de taille:" << chunk.size() << "octets";
-                tcpSocket->write(chunk);
+/*                 qDebug() << "🔊 Envoi d'un chunk de taille:" << chunk.size() << "octets";
+ */                tcpSocket->write(chunk);
                 sendBuffer.remove(0, CHUNK_SIZE);
             } });
 
@@ -104,7 +90,7 @@ void AudioClient::startStreaming()
     }
     else
     {
-        // Si la connexion n'est pas établie, on affiche un avertissement.
+
         qWarning() << "⚠️ Impossible de se connecter au serveur.";
     }
 }
@@ -118,7 +104,7 @@ void AudioClient::startStreaming()
  */
 void AudioClient::stopStreaming()
 {
-    audioSource->stop(); // Arrête la capture audio.
-    tcpSocket->close();  // Ferme la connexion TCP.
+    audioSource->stop();
+    tcpSocket->close();
     qDebug() << "⏹️ Streaming audio arrêté.";
 }

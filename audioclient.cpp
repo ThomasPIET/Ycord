@@ -9,9 +9,12 @@
  *  - port: Port d'écoute du serveur.
  *  - parent: Pointeur vers l'objet parent pour la gestion de la mémoire (optionnel).
  */
-AudioClient::AudioClient(const QString &ip, quint16 port, QObject *parent)
-    : QObject(parent), serverIp(ip), serverPort(port)
+AudioClient::AudioClient(const QString &ip, quint16 port, const QString &iClientName, QObject *parent)
+    : QObject(parent), serverIp(ip), serverPort(port), clientName(iClientName)
 {
+
+    qDebug() << "🔌 Nom du client envoyé au serveur 1:" << clientName;
+
     inputDevice = QMediaDevices::defaultAudioInput();
 
     format.setSampleRate(16000);
@@ -30,7 +33,13 @@ AudioClient::AudioClient(const QString &ip, quint16 port, QObject *parent)
 
     connect(tcpSocket, &QTcpSocket::connected, this, [&]()
             {
-                qDebug() << "✅ Connexion réussie au serveur" << serverIp << ":" << serverPort;
+                qDebug() << "✅ Connexion réussie au serveur" << serverIp << ":" << serverPort << "avec le nom" << clientName;
+                if (!clientName.isEmpty())
+                {
+                    qDebug() << "🔌 Nom du client envoyé au serveur:" << clientName;
+                    setClientName(clientName, tcpSocket);
+               }
+
                 startStreaming(); });
 
     connect(tcpSocket, &QTcpSocket::errorOccurred, this, [&](QAbstractSocket::SocketError error)
@@ -51,6 +60,19 @@ AudioClient::~AudioClient()
 {
     stopStreaming();
     delete audioSource;
+}
+
+void AudioClient::setClientName(const QString &name, QTcpSocket *socket)
+{
+    clientName = name;
+
+    if (socket->state() == QAbstractSocket::ConnectedState)
+    {
+        QByteArray namePacket;
+        namePacket.append("CLIENT_NAME:" + clientName.toUtf8());
+        socket->write(namePacket);
+        qDebug() << "🔌 Nom du client envoyé au serveur:" << clientName;
+    }
 }
 
 /*
@@ -76,13 +98,13 @@ void AudioClient::startStreaming()
         QObject::connect(device, &QIODevice::readyRead, [this, CHUNK_SIZE]()
                          {
             sendBuffer.append(device->readAll());
-/*             qDebug() << "🔊 Buffer de données audio accumulées:" << sendBuffer.size() << "octets";
- */
+ //         qDebug() << "🔊 Buffer de données audio accumulées:" << sendBuffer.size() << "octets";
+
             while (sendBuffer.size() >= CHUNK_SIZE)
             {
                 QByteArray chunk = sendBuffer.left(CHUNK_SIZE);
-/*                 qDebug() << "🔊 Envoi d'un chunk de taille:" << chunk.size() << "octets";
- */                tcpSocket->write(chunk);
+//              qDebug() << "🔊 Envoi d'un chunk de taille:" << chunk.size() << "octets";
+                 tcpSocket->write(chunk);
                 sendBuffer.remove(0, CHUNK_SIZE);
             } });
 

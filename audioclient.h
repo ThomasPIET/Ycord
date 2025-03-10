@@ -15,11 +15,12 @@ class AudioClient : public QObject
     Q_OBJECT
 
 public:
-    AudioClient(const QString &serverIp, quint16 port, QObject *parent = nullptr);
+    AudioClient(const QString &serverIp, quint16 port, const QString &clientName = "", QObject *parent = nullptr);
     ~AudioClient();
 
     void startStreaming();
     void stopStreaming();
+    void setClientName(const QString &name, QTcpSocket *socket);
 
 private:
     QTcpSocket *tcpSocket;
@@ -29,6 +30,7 @@ private:
     QAudioDevice inputDevice;
     QString serverIp;
     quint16 serverPort;
+    QString clientName;
     QByteArray sendBuffer;
 };
 #endif

@@ -78,7 +78,9 @@ void AudioServer::NewConnection()
                 {
             qDebug() << "🔌 Client déconnecté:" << newSocket->peerAddress().toString();
             clientSocket.removeOne(newSocket);
-            newSocket->deleteLater(); });
+            clientNames.remove(newSocket);
+            newSocket->deleteLater(); 
+            qDebug() << "🔌 Nombre de clients connectés:" << clientSocket.size(); });
 
         clientSocket.append(newSocket);
         qDebug() << "🔌 Nombre de clients connectés:" << clientSocket.size();
@@ -100,15 +102,25 @@ void AudioServer::readAudioData()
 
     while (senderClient->bytesAvailable() > 0)
     {
-        QByteArray audioData = senderClient->readAll();
+        QByteArray data = senderClient->readAll();
 
-        if (!audioData.isEmpty())
+        if (data.startsWith("CLIENT_NAME:"))
         {
-            qDebug() << "🔊 Paquet reçu de" << senderClient->peerAddress().toString()
-                     << ", taille =" << audioData.size() << " octets";
+            QString clientName = data.mid(12);
+            clientNames[senderClient] = clientName;
+            qDebug() << "🔌 Client connecté:" << clientName;
+            continue;
+        }
 
-            const int MAX_BUFFER_SIZE = 320000; // 320000 octets = 16000 échantillons à 16 bits
-            audioBuffer.append(audioData);
+        if (!data.isEmpty())
+        {
+            QString clientIdentifier = clientNames.value(senderClient, "Inconnu");
+
+            qDebug() << "🔊 Paquet reçu de" << clientIdentifier
+                     << ", taille =" << data.size() << " octets";
+
+            const int MAX_BUFFER_SIZE = 320000;
+            audioBuffer.append(data);
 
             if (audioBuffer.size() > MAX_BUFFER_SIZE)
             {
@@ -122,14 +134,14 @@ void AudioServer::readAudioData()
                 qDebug() << "🎧 Lecture audio démarrée.";
             }
 
-            const int CHUNK_SIZE = 3200; // Taille des morceaux audio à traiter (200ms à 16kHz)
+            const int CHUNK_SIZE = 3200;
 
             while (audioBuffer.size() >= CHUNK_SIZE)
             {
                 QByteArray chunk = audioBuffer.left(CHUNK_SIZE);
                 audioBuffer.remove(0, CHUNK_SIZE);
 
-                device->write(chunk); // Envoi des données audio au périphérique de sortie
+                device->write(chunk);
             }
         }
     }

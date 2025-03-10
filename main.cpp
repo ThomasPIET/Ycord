@@ -20,18 +20,27 @@ int main(int argc, char *argv[])
 
     QVBoxLayout *layout = new QVBoxLayout(&window);
 
+    QLabel *nameLabel = new QLabel("Nom du client :", &window);
+    QLineEdit *nameInput = new QLineEdit(&window);
+    nameInput->setPlaceholderText("Nom du client");
+    nameInput->setText("Nom du client");
+
     QLabel *ipLabel = new QLabel("Adresse IP du serveur :", &window);
     QLineEdit *ipInput = new QLineEdit(&window);
     ipInput->setPlaceholderText("127.0.0.1");
+    ipInput->setText("127.0.0.1");
 
     QLabel *portLabel = new QLabel("Port :", &window);
     QLineEdit *portInput = new QLineEdit(&window);
     portInput->setPlaceholderText("12345");
+    portInput->setText("12345");
 
     QPushButton *serverButton = new QPushButton("Démarrer le serveur", &window);
     QPushButton *clientButton = new QPushButton("Démarrer le client", &window);
     QPushButton *stopButton = new QPushButton("Arrêter", &window);
 
+    layout->addWidget(nameLabel);
+    layout->addWidget(nameInput);
     layout->addWidget(ipLabel);
     layout->addWidget(ipInput);
     layout->addWidget(portLabel);
@@ -54,8 +63,10 @@ int main(int argc, char *argv[])
                      {
         QString ip = ipInput->text();
         quint16 port = portInput->text().toUShort();
-        client = new AudioClient(ip, port);
-        qDebug() << "🎤 Client connecté à" << ip << ":" << port; });
+        QString clientName = nameInput->text();
+        qDebug() << "🔌 main -> Nom du client:" << clientName;
+        client = new AudioClient(ip, port, clientName);
+        qDebug() << "🎤 Client connecté à" << ip << ":" << port << "avec le nom" << clientName; });
 
     QObject::connect(stopButton, &QPushButton::clicked, [&]()
                      {

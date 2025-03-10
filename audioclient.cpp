@@ -13,8 +13,6 @@ AudioClient::AudioClient(const QString &ip, quint16 port, const QString &iClient
     : QObject(parent), serverIp(ip), serverPort(port), clientName(iClientName)
 {
 
-    qDebug() << "🔌 Nom du client envoyé au serveur 1:" << clientName;
-
     inputDevice = QMediaDevices::defaultAudioInput();
 
     format.setSampleRate(16000);
@@ -88,42 +86,34 @@ void AudioClient::startStreaming()
     if (tcpSocket->state() == QAbstractSocket::ConnectedState)
     {
         device = audioSource->start();
+        const int CHUNK_SIZE = 64;
 
-        const int CHUNK_SIZE = 3200;
-
-        /*
-        Connecte le signal readyRead du périphérique d'entrée à une lambda.
-        Ce signal est émis dès que de nouvelles données audio sont disponibles.
-        */
         QObject::connect(device, &QIODevice::readyRead, [this, CHUNK_SIZE]()
                          {
             sendBuffer.append(device->readAll());
- //         qDebug() << "🔊 Buffer de données audio accumulées:" << sendBuffer.size() << "octets";
-
-            while (sendBuffer.size() >= CHUNK_SIZE)
+            
+          while (sendBuffer.size() >= CHUNK_SIZE) 
             {
+                QByteArray packet;
+                QDataStream stream(&packet, QIODevice::WriteOnly);
+            /*  
+            Définit l'ordre des octets du flux de données en tant que "Little Endian", 
+            ce qui signifie que les octets les moins significatifs sont stockés en premier. 
+            Cela est important pour assurer la compatibilité lors de l'écriture et de la lecture des données audio 
+            */
+                stream.setByteOrder(QDataStream::LittleEndian);
                 QByteArray chunk = sendBuffer.left(CHUNK_SIZE);
-//              qDebug() << "🔊 Envoi d'un chunk de taille:" << chunk.size() << "octets";
-                 tcpSocket->write(chunk);
+                stream << chunk;
+                qDebug() << "🎤 Envoi du paquet audio de taille" << chunk.size() << "octets" << "au serveur" << serverIp << ":" << serverPort << "avec le nom" << clientName;
+                tcpSocket->write(packet);
                 sendBuffer.remove(0, CHUNK_SIZE);
             } });
 
+        tcpSocket->setSocketOption(QAbstractSocket::LowDelayOption, 1);
         qDebug() << "🎤 Streaming audio vers" << serverIp << ":" << serverPort;
-    }
-    else
-    {
-
-        qWarning() << "⚠️ Impossible de se connecter au serveur.";
     }
 }
 
-/*
- * Arrête la capture audio et ferme la connexion TCP.
- *
- * Cette méthode :
- *  - Stoppe la source audio pour interrompre la capture.
- *  - Ferme le socket TCP afin de libérer la connexion réseau.
- */
 void AudioClient::stopStreaming()
 {
     audioSource->stop();

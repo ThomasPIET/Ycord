@@ -116,32 +116,44 @@ void AudioServer::readAudioData()
         {
             QString clientIdentifier = clientNames.value(senderClient, "Inconnu");
 
-            qDebug() << "🔊 Paquet reçu de" << clientIdentifier
-                     << ", taille =" << data.size() << " octets";
-
-            const int MAX_BUFFER_SIZE = 320000;
             audioBuffer.append(data);
 
-            if (audioBuffer.size() > MAX_BUFFER_SIZE)
+            /*
+             Tant qu'on peut extraire un paquet complet (taille + données) du buffer,
+             on dépile ces octets du buffer et on les envoie au périphérique audio.
+             - On lit d'abord la taille du bloc (4 octets) : blockSize
+             - Si on ne dispose pas encore de toutes les données du paquet (blockSize),
+               on sort de la boucle, car on attendra d'autres octets (prochain readyRead()).
+             - Sinon, on extrait le bloc audio et on l'écrit dans le QAudioSink.
+             Cette boucle se répète tant qu'il reste au moins un bloc audio complet
+             dans le buffer */
+            while (true)
             {
-                qWarning() << "⚠️ Buffer trop plein ! Suppression de" << (audioBuffer.size() - MAX_BUFFER_SIZE) << "octets.";
-                audioBuffer.remove(0, audioBuffer.size() - MAX_BUFFER_SIZE);
-            }
+                if (audioBuffer.size() < (int)sizeof(qint32))
+                {
+                    break;
+                }
 
-            if (!device)
-            {
-                device = audioSink->start();
-                qDebug() << "🎧 Lecture audio démarrée.";
-            }
+                QDataStream stream(&audioBuffer, QIODevice::ReadOnly);
+                stream.setByteOrder(QDataStream::LittleEndian);
+                qint32 blockSize = 0;
+                stream >> blockSize;
 
-            const int CHUNK_SIZE = 3200;
+                if (audioBuffer.size() < (int)sizeof(qint32) + blockSize)
+                {
+                    break;
+                }
 
-            while (audioBuffer.size() >= CHUNK_SIZE)
-            {
-                QByteArray chunk = audioBuffer.left(CHUNK_SIZE);
-                audioBuffer.remove(0, CHUNK_SIZE);
+                audioBuffer.remove(0, sizeof(qint32));
+                QByteArray rawAudioData = audioBuffer.left(blockSize);
+                audioBuffer.remove(0, blockSize);
 
-                device->write(chunk);
+                if (!device)
+                {
+                    device = audioSink->start();
+                    qDebug() << "🎧 Lecture audio démarrée.";
+                }
+                device->write(rawAudioData);
             }
         }
     }

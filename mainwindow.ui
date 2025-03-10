@@ -163,7 +163,7 @@ QLabel{
                <x>0</x>
                <y>0</y>
                <width>176</width>
-               <height>82</height>
+               <height>88</height>
               </rect>
              </property>
              <property name="sizePolicy">
@@ -453,7 +453,7 @@ QLabel{
                      <x>0</x>
                      <y>0</y>
                      <width>295</width>
-                     <height>36</height>
+                     <height>60</height>
                     </rect>
                    </property>
                    <property name="sizePolicy">
@@ -527,6 +527,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </layout>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -535,7 +542,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>485</width>
-     <height>17</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

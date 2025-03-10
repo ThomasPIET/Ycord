@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("YCord - Chat");
     this->setWindowState(Qt::WindowMaximized);
+
 }
 
 MainWindow::~MainWindow()

@@ -14,11 +14,21 @@ AudioServer::AudioServer(quint16 port, QObject *parent)
     format.setSampleRate(16000);
     format.setChannelCount(1);
     format.setSampleFormat(QAudioFormat::Int16);
+    // Ajout de logs de débogage
+    qDebug() << "🎵 Périphérique audio par défaut:" << outputDevice.description();
+    qDebug() << "🎵 Format demandé:";
+    qDebug() << "   - Fréquence:" << format.sampleRate();
+    qDebug() << "   - Canaux:" << format.channelCount();
+    qDebug() << "   - Format:" << format.sampleFormat();
 
     if (!outputDevice.isFormatSupported(format))
     {
-        qWarning() << "Format non supporté, utilisation du format par défaut.";
+        qWarning() << "⚠️ Format non supporté, utilisation du format par défaut.";
         format = outputDevice.preferredFormat();
+        qDebug() << "🎵 Nouveau format:";
+        qDebug() << "   - Fréquence:" << format.sampleRate();
+        qDebug() << "   - Canaux:" << format.channelCount();
+        qDebug() << "   - Format:" << format.sampleFormat();
     }
 
     /*
@@ -151,7 +161,10 @@ void AudioServer::readAudioData()
                 if (!device)
                 {
                     device = audioSink->start();
+                    device = audioSink->start();
                     qDebug() << "🎧 Lecture audio démarrée.";
+                    qDebug() << "🎧 État de l'audio sink:" << audioSink->state();
+                    qDebug() << "🎧 Taille du buffer:" << audioSink->bufferSize();
                 }
                 device->write(rawAudioData);
             }

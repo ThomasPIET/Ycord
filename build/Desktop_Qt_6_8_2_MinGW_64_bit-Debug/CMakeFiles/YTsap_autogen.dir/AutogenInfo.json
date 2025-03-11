@@ -347,18 +347,6 @@
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/maell/Ycord/Client.h",
-			"MU",
-			"EWIEGA46WW/moc_Client.cpp",
-			null
-		],
-		[
-			"C:/Users/maell/Ycord/Server.h",
-			"MU",
-			"EWIEGA46WW/moc_Server.cpp",
-			null
-		],
-		[
 			"C:/Users/maell/Ycord/login.h",
 			"MU",
 			"EWIEGA46WW/moc_login.cpp",
@@ -450,8 +438,6 @@
 	"SETTINGS_FILE" : "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/CMakeFiles/YTsap_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "C:/Users/maell/Ycord/Client.cpp", "MU", null ],
-		[ "C:/Users/maell/Ycord/Serveur.cpp", "MU", null ],
 		[ "C:/Users/maell/Ycord/login.cpp", "MU", null ],
 		[ "C:/Users/maell/Ycord/main.cpp", "MU", null ],
 		[ "C:/Users/maell/Ycord/mainwindow.cpp", "MU", null ],

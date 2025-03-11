@@ -371,6 +371,14 @@ CMakeFiles/YTsap.dir/mainwindow.cpp.obj: \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qbitmap.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qtabwidget.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/QTcpSocket \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtcpsocket.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetwork-config.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetworkexports.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qabstractsocket.h \
+ C:/Qt/6.8.2/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qhostaddress.h \
  C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/include/ui_mainwindow.h \
  C:/Qt/6.8.2/mingw_64/include/QtCore/QVariant \
  C:/Qt/6.8.2/mingw_64/include/QtCore/qvariant.h \
@@ -399,7 +407,6 @@ CMakeFiles/YTsap.dir/mainwindow.cpp.obj: \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qlabel.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qframe.h \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qpicture.h \
- C:/Qt/6.8.2/mingw_64/include/QtCore/qiodevice.h \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qtextdocument.h \
  C:/Qt/6.8.2/mingw_64/include/QtCore/qurl.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/QLineEdit \
@@ -424,4 +431,8 @@ CMakeFiles/YTsap.dir/mainwindow.cpp.obj: \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qtextedit.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/QVBoxLayout \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/QWidget \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qwidget.h
+ C:/Qt/6.8.2/mingw_64/include/QtWidgets/qwidget.h \
+ C:/Qt/6.8.2/mingw_64/include/QtCore/QDebug \
+ C:/Qt/6.8.2/mingw_64/include/QtCore/qdebug.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/QHostAddress \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qhostaddress.h

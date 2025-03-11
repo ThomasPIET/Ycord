@@ -9,8 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "YTsap_autogen/timestamp" "custom" "YTsap_autogen/deps"
-  "C:/Users/maell/Ycord/Client.cpp" "CMakeFiles/YTsap.dir/Client.cpp.obj" "gcc" "CMakeFiles/YTsap.dir/Client.cpp.obj.d"
-  "C:/Users/maell/Ycord/Serveur.cpp" "CMakeFiles/YTsap.dir/Serveur.cpp.obj" "gcc" "CMakeFiles/YTsap.dir/Serveur.cpp.obj.d"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/mocs_compilation.cpp" "CMakeFiles/YTsap.dir/YTsap_autogen/mocs_compilation.cpp.obj" "gcc" "CMakeFiles/YTsap.dir/YTsap_autogen/mocs_compilation.cpp.obj.d"
   "C:/Users/maell/Ycord/login.cpp" "CMakeFiles/YTsap.dir/login.cpp.obj" "gcc" "CMakeFiles/YTsap.dir/login.cpp.obj.d"
   "C:/Users/maell/Ycord/main.cpp" "CMakeFiles/YTsap.dir/main.cpp.obj" "gcc" "CMakeFiles/YTsap.dir/main.cpp.obj.d"

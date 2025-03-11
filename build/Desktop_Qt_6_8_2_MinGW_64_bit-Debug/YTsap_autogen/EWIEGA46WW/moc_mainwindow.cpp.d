@@ -45,6 +45,7 @@ C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWI
   C:/Qt/6.8.2/mingw_64/include/QtCore/qglobalstatic.h \
   C:/Qt/6.8.2/mingw_64/include/QtCore/qhash.h \
   C:/Qt/6.8.2/mingw_64/include/QtCore/qhashfunctions.h \
+  C:/Qt/6.8.2/mingw_64/include/QtCore/qiodevice.h \
   C:/Qt/6.8.2/mingw_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.8.2/mingw_64/include/QtCore/qiterable.h \
   C:/Qt/6.8.2/mingw_64/include/QtCore/qiterator.h \
@@ -145,6 +146,13 @@ C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWI
   C:/Qt/6.8.2/mingw_64/include/QtGui/qtransform.h \
   C:/Qt/6.8.2/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.8.2/mingw_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.8.2/mingw_64/include/QtNetwork/QTcpSocket \
+  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qabstractsocket.h \
+  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qhostaddress.h \
+  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtcpsocket.h \
+  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetwork-config.h \
+  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetworkexports.h \
+  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetworkglobal.h \
   C:/Qt/6.8.2/mingw_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.8.2/mingw_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.8.2/mingw_64/include/QtWidgets/qsizepolicy.h \

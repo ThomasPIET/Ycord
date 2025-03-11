@@ -371,6 +371,14 @@ CMakeFiles/YTsap.dir/main.cpp.obj: C:\Users\maell\Ycord\main.cpp \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qbitmap.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qtabwidget.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/QTcpSocket \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtcpsocket.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetwork-config.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetworkexports.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qabstractsocket.h \
+ C:/Qt/6.8.2/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.8.2/mingw_64/include/QtNetwork/qhostaddress.h \
  C:\Users\maell\Ycord\login.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/QWidget \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qwidget.h \

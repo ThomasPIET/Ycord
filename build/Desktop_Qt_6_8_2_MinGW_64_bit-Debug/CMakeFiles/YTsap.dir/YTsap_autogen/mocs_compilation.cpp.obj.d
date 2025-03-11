@@ -1,7 +1,7 @@
 CMakeFiles/YTsap.dir/YTsap_autogen/mocs_compilation.cpp.obj: \
  C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\mocs_compilation.cpp \
- C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\EWIEGA46WW/moc_Client.cpp \
- C:/Users/maell/Ycord/Client.h \
+ C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\EWIEGA46WW/moc_login.cpp \
+ C:/Users/maell/Ycord/login.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/QWidget \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qwidget.h \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -371,6 +371,13 @@ CMakeFiles/YTsap.dir/YTsap_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.8.2/mingw_64/include/QtWidgets/qsizepolicy.h \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.8.2/mingw_64/include/QtGui/qbitmap.h \
+ C:/Qt/6.8.2/mingw_64/include/QtCore/qtmochelpers.h \
+ C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\EWIEGA46WW/moc_mainwindow.cpp \
+ C:/Users/maell/Ycord/mainwindow.h \
+ C:/Qt/6.8.2/mingw_64/include/QtWidgets/QMainWindow \
+ C:/Qt/6.8.2/mingw_64/include/QtWidgets/qmainwindow.h \
+ C:/Qt/6.8.2/mingw_64/include/QtWidgets/qwidget.h \
+ C:/Qt/6.8.2/mingw_64/include/QtWidgets/qtabwidget.h \
  C:/Qt/6.8.2/mingw_64/include/QtNetwork/QTcpSocket \
  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtcpsocket.h \
  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtnetworkglobal.h \
@@ -379,39 +386,5 @@ CMakeFiles/YTsap.dir/YTsap_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qabstractsocket.h \
  C:/Qt/6.8.2/mingw_64/include/QtCore/qiodevice.h \
  C:/Qt/6.8.2/mingw_64/include/QtNetwork/qhostaddress.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/QTextEdit \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qtextedit.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qabstractscrollarea.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qframe.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qwidget.h \
- C:/Qt/6.8.2/mingw_64/include/QtGui/qtextdocument.h \
- C:/Qt/6.8.2/mingw_64/include/QtCore/qurl.h \
- C:/Qt/6.8.2/mingw_64/include/QtGui/qtextoption.h \
- C:/Qt/6.8.2/mingw_64/include/QtGui/qtextcursor.h \
- C:/Qt/6.8.2/mingw_64/include/QtGui/qtextformat.h \
- C:/Qt/6.8.2/mingw_64/include/QtGui/qpen.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/QLineEdit \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qlineedit.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/QPushButton \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qpushbutton.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qabstractbutton.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/QVBoxLayout \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qboxlayout.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qlayout.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qlayoutitem.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qboxlayout.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qgridlayout.h \
- C:/Qt/6.8.2/mingw_64/include/QtCore/qtmochelpers.h \
- C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\EWIEGA46WW/moc_Server.cpp \
- C:/Users/maell/Ycord/Server.h \
- C:/Qt/6.8.2/mingw_64/include/QtNetwork/QTcpServer \
- C:/Qt/6.8.2/mingw_64/include/QtNetwork/qtcpserver.h \
- C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\EWIEGA46WW/moc_login.cpp \
- C:/Users/maell/Ycord/login.h \
- C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\EWIEGA46WW/moc_mainwindow.cpp \
- C:/Users/maell/Ycord/mainwindow.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/QMainWindow \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qmainwindow.h \
- C:/Qt/6.8.2/mingw_64/include/QtWidgets/qtabwidget.h \
  C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\YTsap_autogen\EWIEGA46WW/moc_settings.cpp \
  C:/Users/maell/Ycord/settings.h

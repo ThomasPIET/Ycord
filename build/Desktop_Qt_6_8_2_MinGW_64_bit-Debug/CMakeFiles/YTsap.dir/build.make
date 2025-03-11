@@ -153,45 +153,13 @@ CMakeFiles/YTsap.dir/settings.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/YTsap.dir/settings.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\maell\Ycord\settings.cpp -o CMakeFiles\YTsap.dir\settings.cpp.s
 
-CMakeFiles/YTsap.dir/Client.cpp.obj: CMakeFiles/YTsap.dir/flags.make
-CMakeFiles/YTsap.dir/Client.cpp.obj: CMakeFiles/YTsap.dir/includes_CXX.rsp
-CMakeFiles/YTsap.dir/Client.cpp.obj: C:/Users/maell/Ycord/Client.cpp
-CMakeFiles/YTsap.dir/Client.cpp.obj: CMakeFiles/YTsap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/YTsap.dir/Client.cpp.obj"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/YTsap.dir/Client.cpp.obj -MF CMakeFiles\YTsap.dir\Client.cpp.obj.d -o CMakeFiles\YTsap.dir\Client.cpp.obj -c C:\Users\maell\Ycord\Client.cpp
-
-CMakeFiles/YTsap.dir/Client.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/YTsap.dir/Client.cpp.i"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\maell\Ycord\Client.cpp > CMakeFiles\YTsap.dir\Client.cpp.i
-
-CMakeFiles/YTsap.dir/Client.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/YTsap.dir/Client.cpp.s"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\maell\Ycord\Client.cpp -o CMakeFiles\YTsap.dir\Client.cpp.s
-
-CMakeFiles/YTsap.dir/Serveur.cpp.obj: CMakeFiles/YTsap.dir/flags.make
-CMakeFiles/YTsap.dir/Serveur.cpp.obj: CMakeFiles/YTsap.dir/includes_CXX.rsp
-CMakeFiles/YTsap.dir/Serveur.cpp.obj: C:/Users/maell/Ycord/Serveur.cpp
-CMakeFiles/YTsap.dir/Serveur.cpp.obj: CMakeFiles/YTsap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/YTsap.dir/Serveur.cpp.obj"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/YTsap.dir/Serveur.cpp.obj -MF CMakeFiles\YTsap.dir\Serveur.cpp.obj.d -o CMakeFiles\YTsap.dir\Serveur.cpp.obj -c C:\Users\maell\Ycord\Serveur.cpp
-
-CMakeFiles/YTsap.dir/Serveur.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/YTsap.dir/Serveur.cpp.i"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\maell\Ycord\Serveur.cpp > CMakeFiles\YTsap.dir\Serveur.cpp.i
-
-CMakeFiles/YTsap.dir/Serveur.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/YTsap.dir/Serveur.cpp.s"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\maell\Ycord\Serveur.cpp -o CMakeFiles\YTsap.dir\Serveur.cpp.s
-
 # Object files for target YTsap
 YTsap_OBJECTS = \
 "CMakeFiles/YTsap.dir/YTsap_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/YTsap.dir/main.cpp.obj" \
 "CMakeFiles/YTsap.dir/mainwindow.cpp.obj" \
 "CMakeFiles/YTsap.dir/login.cpp.obj" \
-"CMakeFiles/YTsap.dir/settings.cpp.obj" \
-"CMakeFiles/YTsap.dir/Client.cpp.obj" \
-"CMakeFiles/YTsap.dir/Serveur.cpp.obj"
+"CMakeFiles/YTsap.dir/settings.cpp.obj"
 
 # External object files for target YTsap
 YTsap_EXTERNAL_OBJECTS =
@@ -201,8 +169,6 @@ YTsap.exe: CMakeFiles/YTsap.dir/main.cpp.obj
 YTsap.exe: CMakeFiles/YTsap.dir/mainwindow.cpp.obj
 YTsap.exe: CMakeFiles/YTsap.dir/login.cpp.obj
 YTsap.exe: CMakeFiles/YTsap.dir/settings.cpp.obj
-YTsap.exe: CMakeFiles/YTsap.dir/Client.cpp.obj
-YTsap.exe: CMakeFiles/YTsap.dir/Serveur.cpp.obj
 YTsap.exe: CMakeFiles/YTsap.dir/build.make
 YTsap.exe: C:/Qt/6.8.2/mingw_64/lib/libQt6Widgets.a
 YTsap.exe: C:/Qt/6.8.2/mingw_64/lib/libQt6Network.a
@@ -212,7 +178,7 @@ YTsap.exe: C:/Qt/6.8.2/mingw_64/lib/libQt6EntryPoint.a
 YTsap.exe: CMakeFiles/YTsap.dir/linkLibs.rsp
 YTsap.exe: CMakeFiles/YTsap.dir/objects1.rsp
 YTsap.exe: CMakeFiles/YTsap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable YTsap.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\maell\Ycord\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable YTsap.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\YTsap.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -41,15 +41,10 @@ endif()
 # _directory_contents at C:/Qt/6.8.2/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:55 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "C:/Users/maell/Ycord/*.cpp")
 set(OLD_GLOB
-  "C:/Users/maell/Ycord/Client.cpp"
-  "C:/Users/maell/Ycord/Serveur.cpp"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/CMakeFiles/3.31.5/CompilerIdCXX/CMakeCXXCompilerId.cpp"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/ChatVocal_autogen/EWIEGA46WW/moc_audioclient.cpp"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/ChatVocal_autogen/EWIEGA46WW/moc_audioserver.cpp"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/ChatVocal_autogen/mocs_compilation.cpp"
-  "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWIEGA46WW/moc_Client.cpp"
-  "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWIEGA46WW/moc_Server.cpp"
-  "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWIEGA46WW/moc_chat.cpp"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWIEGA46WW/moc_login.cpp"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWIEGA46WW/moc_mainwindow.cpp"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/EWIEGA46WW/moc_settings.cpp"
@@ -76,8 +71,6 @@ endif()
 # _directory_contents at C:/Qt/6.8.2/mingw_64/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:55 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "C:/Users/maell/Ycord/*.h")
 set(OLD_GLOB
-  "C:/Users/maell/Ycord/Client.h"
-  "C:/Users/maell/Ycord/Server.h"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/ChatVocal_autogen/moc_predefs.h"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/include/ui_login.h"
   "C:/Users/maell/Ycord/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/YTsap_autogen/include/ui_mainwindow.h"

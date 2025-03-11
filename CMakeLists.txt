@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Network WebSockets)
 
 set(TS_FILES YTsap_fr_FR.ts)
 
@@ -28,37 +28,30 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         login.h login.cpp login.ui
         settings.h settings.cpp settings.ui
+        uihandler.h uihandler.cpp
+        channelhandler.h channelhandler.cpp
     )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET YTsap APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
-
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 else()
     if(ANDROID)
         add_library(YTsap SHARED
             ${PROJECT_SOURCES}
         )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(YTsap
             ${PROJECT_SOURCES}
         )
     endif()
-
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(YTsap PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+# Lier QtNetwork et QtWebSockets ici
+target_link_libraries(YTsap PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::WebSockets)
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
   set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.YTsap)
 endif()
+
 set_target_properties(YTsap PROPERTIES
     ${BUNDLE_ID_OPTION}
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}

@@ -23,7 +23,7 @@ private:
     Ui::login *ui;
 
 signals:
-    void connected(QString name);
+    void connected(QString name, QString ip);
 };
 
 #endif // LOGIN_H

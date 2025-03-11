@@ -1,6 +1,4 @@
-#include "mainwindow.h"
-#include "login.h"
-#include "settings.h"
+#include "uihandler.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -10,24 +8,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    settings s;
-    MainWindow w;
-    login l;
+    UiHandler ui1;
+    ui1.init();
 
-    QSettings settings("YCord","Data");
-    QString savedUsername = settings.value("username").toString();
+    UiHandler ui2;
+    ui2.init();
 
-    if (savedUsername != ""){
-        l.set_saved_name(savedUsername);
-    }
-
-    QObject::connect(&l,&login::connected,[&](QString name){
-        settings.setValue("username",name);
-        l.close();
-        w.show();
-        s.show();
-    });
-
-    l.show();
     return a.exec();
 }

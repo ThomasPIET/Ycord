@@ -17,7 +17,8 @@ login::~login()
 void login::on_pushButton_clicked()
 {
     QLineEdit *nameInput = ui->name;
-    emit connected(nameInput->text());
+    QLineEdit *ipInput = ui->ip;
+    emit connected(nameInput->text(),ipInput->text());
 }
 
 void login::set_saved_name(QString name)

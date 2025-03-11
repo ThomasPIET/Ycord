@@ -42,7 +42,9 @@ void UiHandler::init(){
     });
 
     // Shows message on the ui
-    QObject::connect(&c, &ChannelHandler::newMessage, [this](QString msg) {
-        m.displayMessage(msg);
+    QObject::connect(&c, &ChannelHandler::newMessage, [this](QString msg, QString src) {
+        if (src == c.identity || src == c.currentChannel){
+            m.displayMessage(msg);
+        }
     });
 }

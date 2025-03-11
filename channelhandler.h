@@ -23,9 +23,10 @@ public:
     void switchChannel(QString ip);
     void requestMessage(QString msg);
     QString getUser();
+    QString identity;
 signals:
     void clientListUpdated(QStringList clients);
-    void newMessage(QString msg);
+    void newMessage(QString msg,QString src);
 
 private:
     QString username;

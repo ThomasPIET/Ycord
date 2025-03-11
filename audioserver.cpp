@@ -113,6 +113,7 @@ void AudioServer::readAudioData()
     while (senderClient->bytesAvailable() > 0)
     {
         QByteArray data = senderClient->readAll();
+        qDebug() << "🔊 Données lues:";
 
         if (data.startsWith("CLIENT_NAME:"))
         {
@@ -127,6 +128,8 @@ void AudioServer::readAudioData()
             QString clientIdentifier = clientNames.value(senderClient, "Inconnu");
 
             audioBuffer.append(data);
+            qDebug() << "🔊 Écoute du son en cours pour le client:" << clientIdentifier; // Log à chaque écoute
+
             /*
              Tant qu'on peut extraire un paquet complet (taille + données) du buffer,
              on dépile ces octets du buffer et on les envoie au périphérique audio.

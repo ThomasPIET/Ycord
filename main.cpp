@@ -1,5 +1,3 @@
-/* rm - rf build &&mkdir build &&cd build &&cmake..&&make &&./ ChatVocal */
-
 #include <QApplication>
 #include <QWidget>
 #include <QPushButton>
@@ -7,8 +5,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QTextEdit>
-#include "audioserver.h"
-#include "audioclient.h"
+#include "audiomanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -37,6 +34,7 @@ int main(int argc, char *argv[])
 
     QPushButton *serverButton = new QPushButton("Démarrer le serveur", &window);
     QPushButton *clientButton = new QPushButton("Démarrer le client", &window);
+    QPushButton *bothButton = new QPushButton("Démarrer serveur et client", &window);
     QPushButton *stopButton = new QPushButton("Arrêter", &window);
 
     layout->addWidget(nameLabel);
@@ -47,16 +45,20 @@ int main(int argc, char *argv[])
     layout->addWidget(portInput);
     layout->addWidget(serverButton);
     layout->addWidget(clientButton);
+    layout->addWidget(bothButton);
     layout->addWidget(stopButton);
 
-    AudioServer *server = nullptr;
-    AudioClient *client = nullptr;
+    // Créer une instance unique d'AudioManager
+    AudioManager *audioManager = new AudioManager();
 
     QObject::connect(serverButton, &QPushButton::clicked, [&]()
                      {
         quint16 port = portInput->text().toUShort();
-        server = new AudioServer(port);
-        server->startServer();
+        
+        // Réinitialiser AudioManager pour fonctionner en mode serveur uniquement
+        delete audioManager;
+        audioManager = new AudioManager(port);
+        
         qDebug() << "🖥️ Serveur lancé sur le port" << port; });
 
     QObject::connect(clientButton, &QPushButton::clicked, [&]()
@@ -64,24 +66,31 @@ int main(int argc, char *argv[])
         QString ip = ipInput->text();
         quint16 port = portInput->text().toUShort();
         QString clientName = nameInput->text();
-        qDebug() << "🔌 main -> Nom du client:" << clientName;
-        client = new AudioClient(ip, port, clientName);
+        
+        // Réinitialiser AudioManager pour fonctionner en mode client uniquement
+        delete audioManager;
+        audioManager = new AudioManager(0, ip, port, clientName);
+        
         qDebug() << "🎤 Client connecté à" << ip << ":" << port << "avec le nom" << clientName; });
+
+    QObject::connect(bothButton, &QPushButton::clicked, [&]()
+                     {
+        QString ip = ipInput->text();
+        quint16 port = portInput->text().toUShort();
+        QString clientName = nameInput->text();
+        
+        // Réinitialiser AudioManager pour fonctionner en mode combiné (serveur + client)
+        delete audioManager;
+        audioManager = new AudioManager(port, ip, port, clientName);
+        
+        qDebug() << "🔄 Mode combiné : serveur sur le port" << port << "et client connecté à" << ip << ":" << port; });
 
     QObject::connect(stopButton, &QPushButton::clicked, [&]()
                      {
-        if (server) {
-            server->stopServer();
-            delete server;
-            server = nullptr;
-            qDebug() << "🛑 Serveur arrêté.";
-        }
-        if (client) {
-            client->stopStreaming();
-            delete client;
-            client = nullptr;
-            qDebug() << "🛑 Client arrêté.";
-        } });
+        // Nettoyer et réinitialiser
+        delete audioManager;
+        audioManager = new AudioManager();
+        qDebug() << "🛑 Serveur et client arrêtés."; });
 
     window.setLayout(layout);
     window.show();

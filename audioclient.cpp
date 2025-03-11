@@ -15,9 +15,9 @@ AudioClient::AudioClient(const QString &ip, quint16 port, const QString &iClient
 
     inputDevice = QMediaDevices::defaultAudioInput();
 
-    format.setSampleRate(16000);
-    format.setChannelCount(1);
-    format.setSampleFormat(QAudioFormat::Int16);
+    format.setSampleRate(48000);
+    format.setChannelCount(2);
+    format.setSampleFormat(QAudioFormat::Float);
 
     if (!inputDevice.isFormatSupported(format))
     {

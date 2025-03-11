@@ -11,9 +11,9 @@ AudioServer::AudioServer(quint16 port, QObject *parent)
     Format audio : 16 bits, 16 kHz, mono
     */
     outputDevice = QMediaDevices::defaultAudioOutput();
-    format.setSampleRate(16000);
-    format.setChannelCount(1);
-    format.setSampleFormat(QAudioFormat::Int16);
+    format.setSampleRate(48000);
+    format.setChannelCount(2);
+    format.setSampleFormat(QAudioFormat::Float);
     // Ajout de logs de débogage
     qDebug() << "🎵 Périphérique audio par défaut:" << outputDevice.description();
     qDebug() << "🎵 Format demandé:";
@@ -127,7 +127,6 @@ void AudioServer::readAudioData()
             QString clientIdentifier = clientNames.value(senderClient, "Inconnu");
 
             audioBuffer.append(data);
-
             /*
              Tant qu'on peut extraire un paquet complet (taille + données) du buffer,
              on dépile ces octets du buffer et on les envoie au périphérique audio.

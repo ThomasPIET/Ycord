@@ -19,6 +19,7 @@ void ChannelHandler::setInfos(QString username, QString ip) {
     this->ip = ip;
 
     this->port = this->getRandomPort();
+    this->callPort = this->getRandomPort();
 }
 
 int ChannelHandler::getRandomPort() {
@@ -38,41 +39,46 @@ void ChannelHandler::init() {
     this->initServerSocket();
 }
 
-void ChannelHandler::initSelfSocket() {
-    this->selfSocketServer = new QWebSocketServer("Self WebSocket Server", QWebSocketServer::NonSecureMode, this);
+    void ChannelHandler::initSelfSocket() {
+        this->selfSocketServer = new QWebSocketServer("Self WebSocket Server", QWebSocketServer::NonSecureMode, this);
 
-    if (selfSocketServer->listen(QHostAddress::Any, this->port)) {
-        qDebug() << "Serveur WebSocket local démarré sur le port" << this->port;
+        if (selfSocketServer->listen(QHostAddress::Any, this->port)) {
+            qDebug() << "Serveur WebSocket local démarré sur le port" << this->port;
 
-        QObject::connect(selfSocketServer, &QWebSocketServer::newConnection, this, [&]() {
-            QWebSocket *clientSocket = selfSocketServer->nextPendingConnection();
-            qDebug() << "Un client s'est connecté au serveur WebSocket local.";
+            QObject::connect(selfSocketServer, &QWebSocketServer::newConnection, this, [&]() {
+                QWebSocket *clientSocket = selfSocketServer->nextPendingConnection();
 
-            QObject::connect(clientSocket, &QWebSocket::textMessageReceived, [&](const QString &message) {
-                QJsonDocument doc = QJsonDocument::fromJson(message.toUtf8());
+                QObject::connect(clientSocket, &QWebSocket::textMessageReceived, [&,clientSocket](const QString &message) {
+                    QJsonDocument doc = QJsonDocument::fromJson(message.toUtf8());
 
-                if (doc.isObject()) {
-                    QJsonObject jsonObj = doc.object();
-                    QString action = jsonObj["action"].toString();
+                    if (doc.isObject()) {
+                        QJsonObject jsonObj = doc.object();
+                        QString action = jsonObj["action"].toString();
 
-                    if (action == "message"){
-                        QString msg = jsonObj["message"].toString();
-                        QString src = jsonObj["source"].toString();
-                        emit newMessage(msg,src);
+                        if (action == "message"){
+                            QString msg = jsonObj["message"].toString();
+                            QString src = jsonObj["source"].toString();
+                            emit newMessage(msg,src);
+                        }else if (action == "isHostingCall"){
+                            QJsonObject jsonObj;
+                            jsonObj["action"] = "hostState";
+                            jsonObj["source"] = this->identity;
+                            jsonObj["callTo"] = this->hostingCall;
+                            jsonObj["port"] = this->callPort;
+
+                            QJsonDocument doc(jsonObj);
+                            QByteArray jsonData = doc.toJson();
+
+                            clientSocket->sendTextMessage(QString(jsonData));
+                        }
                     }
-                }
 
+                });
             });
-
-            QObject::connect(clientSocket, &QWebSocket::disconnected, [clientSocket]() {
-                qDebug() << "Le client a été déconnecté.";
-                clientSocket->deleteLater();
-            });
-        });
-    } else {
-        qDebug() << "Impossible de démarrer le serveur WebSocket local sur le port" << this->port;
+        } else {
+            qDebug() << "Impossible de démarrer le serveur WebSocket local sur le port" << this->port;
+        }
     }
-}
 
 void ChannelHandler::switchChannel(QString ip){
     this->currentChannel = ip;
@@ -86,11 +92,56 @@ void ChannelHandler::switchChannel(QString ip){
         qDebug() << "Connecté a " << this->currentChannel;
     });
 
+    QObject::connect(&channelSocket, &QWebSocket::textMessageReceived, [&](const QString &message) {
+        QJsonDocument doc = QJsonDocument::fromJson(message.toUtf8());
+        if (doc.isObject()) {
+            QJsonObject jsonObj = doc.object();
+            QString action = jsonObj["action"].toString();
+
+            if (action == "hostState"){
+                QString callTo = jsonObj["callTo"].toString();
+                QString src = jsonObj["source"].toString();
+                int callPort = jsonObj["port"].toInt();
+
+                if (callTo == ""){
+                    qDebug() << "Host";
+                    this->hostingCall = this->identity;
+
+                    this->server = new AudioServer(this->callPort);
+                    this->server->startServer();
+                }else{
+                    qDebug() << "Client" << callPort;
+                    this->client = new AudioClient(src.split(":").at(0),callPort,this->getUser());
+                }
+            }
+        }
+    });
+
     QObject::connect(&channelSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error), [&](QAbstractSocket::SocketError error) {
         qDebug() << "Erreur WebSocket :" << channelSocket.errorString();
     });
 
     channelSocket.open(QUrl("ws://" + currentChannel));
+}
+
+void ChannelHandler::closeCall(){
+    this->hostingCall = "";
+
+    if (this->server != nullptr){
+        this->server->stopServer();
+        delete this->server;
+        this->server = nullptr;
+    }
+
+    if (this->client != nullptr){
+        this->client->stopStreaming();
+        delete this->client;
+        this->client = nullptr;
+    }
+}
+
+void ChannelHandler::attemptCall() {
+    channelSocket.sendTextMessage("{\"action\":\"isHostingCall\"}");
 }
 
 void ChannelHandler::requestMessage(QString msg) {

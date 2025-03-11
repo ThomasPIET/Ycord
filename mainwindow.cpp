@@ -78,3 +78,18 @@ void MainWindow::on_msgBox_textChanged()
     }
 }
 
+
+void MainWindow::on_callBtn_clicked()
+{
+    emit callButtonPressed();
+}
+
+void MainWindow::updateCallText(QString msg){
+    QPushButton *btn = this->ui->callBtn;
+    btn->setText(msg);
+}
+
+QString MainWindow::getCallText(){
+    QPushButton *btn = this->ui->callBtn;
+    return btn->text();
+}

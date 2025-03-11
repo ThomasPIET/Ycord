@@ -47,4 +47,15 @@ void UiHandler::init(){
             m.displayMessage(msg);
         }
     });
+
+    //Handle calls state
+    QObject::connect(&m, &MainWindow::callButtonPressed, [this]() {
+        if (m.getCallText() == "Appel"){
+            m.updateCallText("Appel en cours");
+            c.attemptCall();
+        }else{
+            m.updateCallText("Appel");
+            c.closeCall();
+        };
+    });
 }

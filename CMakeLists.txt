@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools Network WebSockets)
+find_package(Qt6 REQUIRED COMPONENTS Multimedia)
 
 set(TS_FILES YTsap_fr_FR.ts)
 
@@ -30,6 +31,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         settings.h settings.cpp settings.ui
         uihandler.h uihandler.cpp
         channelhandler.h channelhandler.cpp
+        audioserver.h audioserver.cpp
+        audioclient.h audioclient.cpp
+        audiorecorder.h audiorecorder.cpp
+        audiorecorder.h audiorecorder.cpp
     )
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 else()
@@ -46,7 +51,7 @@ else()
 endif()
 
 # Lier QtNetwork et QtWebSockets ici
-target_link_libraries(YTsap PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::WebSockets)
+target_link_libraries(YTsap PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Network Qt${QT_VERSION_MAJOR}::WebSockets Qt6::Multimedia)
 
 if(${QT_VERSION} VERSION_LESS 6.1.0)
   set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.YTsap)

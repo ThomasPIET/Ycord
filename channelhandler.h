@@ -6,6 +6,9 @@
 #include <QWebSocket>
 #include <QWebSocketServer>
 
+#include "audioserver.h"
+#include "audioclient.h"
+
 class ChannelHandler : public QObject
 {
     Q_OBJECT
@@ -24,6 +27,13 @@ public:
     void requestMessage(QString msg);
     QString getUser();
     QString identity;
+    QString hostingCall;
+    void attemptCall();
+    void closeCall();
+    int callPort;
+
+    AudioServer *server = nullptr;
+    AudioClient *client = nullptr;
 signals:
     void clientListUpdated(QStringList clients);
     void newMessage(QString msg,QString src);
